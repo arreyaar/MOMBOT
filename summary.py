@@ -10,6 +10,12 @@ from results import *
 import requests
 import pandas as pd
 
+if 'start_point' not in st.session_state:
+    st.session_state['start_point'] = 0
+    
+def update_start(start_t):
+    st.session_state['start_point'] = int(start_t/1000)
+
 uploaded_file = st.file_uploader('Please upload a file to get minutes')
 
 if uploaded_file is not None:
@@ -34,6 +40,12 @@ if uploaded_file is not None:
             st.subheader('Summary points from the meeting')
             chapters = poll_resp.json()['chapters']
             chapters_df = pd.DataFrame(chapters)
-            st.dataframe(chapters_df)
-
+            chapters_df['start_str'] = chapters_df['start'].apply(toMiliSec)
+            chapters_df['end_str'] = chapters_df['end'].apply(toMiliSec)
             
+            #st.dataframe(chapters_df)
+
+            for index , row in chapters_df.iterrows():
+                with st.expander(row['gist']):
+                    st.write(row['summary'])
+                    st.button(row['start_str'], on_click=update_start, args=(row['start'],))

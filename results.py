@@ -46,3 +46,16 @@ def upload_to_AI(f_audio):
     poll_end_pt = transcript_pt + "/" + resp.json()['id']
     
     return poll_end_pt
+
+def toMiliSec(mili_start):
+    sec = int((mili_start / 1000) % 60)
+    min = int((mili_start / ( 1000 * 60)) % 60)
+    hrs = int((mili_start / (1000 * 60 * 60)) % 24)
+    btn_caption = ''
+
+    if hrs > 0:
+        btn_caption += f'{hrs:02d}:{min:02d}:{sec:02d}'
+    else:
+        btn_caption += f'{min:02d}:{sec:02d}'
+
+    return btn_caption
