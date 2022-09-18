@@ -84,5 +84,9 @@ if uploaded_file is not None:
             f.close()
             pdf.createPDF("minutes.txt")
             
+            #auto send mail to intended participants
+            mail.sendMail("minutes.pdf")
+            
+            #also send mail on click on send mail button on GUI
             if st.button('Send summary on mail'):
                 mail.sendMail("minutes.pdf")
