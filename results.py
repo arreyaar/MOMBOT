@@ -41,10 +41,9 @@ def upload_to_AI(f_audio):
     }
     
     resp = requests.post(transcript_pt, json=json, headers=headers)
-    print(resp.json())
     
     poll_end_pt = transcript_pt + "/" + resp.json()['id']
-    
+
     return poll_end_pt
 
 def toMiliSec(mili_start):
