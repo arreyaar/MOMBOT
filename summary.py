@@ -73,7 +73,7 @@ if uploaded_file is not None:
             chapters_df['start_str'] = chapters_df['start'].apply(toMiliSec)
             chapters_df['end_str'] = chapters_df['end'].apply(toMiliSec)
             
-            f = open("summary.txt", "w")
+            f = open("minutes.txt", "w")
 
             for index , row in chapters_df.iterrows():
                 with st.expander(row['gist']):
@@ -82,7 +82,7 @@ if uploaded_file is not None:
                     f.write(row['summary'] + "\n")
                     st.button(row['start_str'], on_click=update_start, args=(row['start'],))
             f.close()
-            pdf.createPDF("summary.txt")
+            pdf.createPDF("minutes.txt")
             
             if st.button('Send summary on mail'):
-                mail.sendMail("summary.pdf")
+                mail.sendMail("minutes.pdf")

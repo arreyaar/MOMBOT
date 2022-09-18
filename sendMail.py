@@ -20,7 +20,7 @@ MOMBOT
     #The mail addresses and password
     sender_address = 'aman.chauhan@outlook.in'
     sender_pass = 'T38t!ngM@!l'
-    receiver_address = 'aman.chauhan@outlook.in'
+    receiver_address = 'vikash.wadhwani@gmail.com'
     #Setup the MIME
     message = MIMEMultipart()
     message['From'] = sender_address

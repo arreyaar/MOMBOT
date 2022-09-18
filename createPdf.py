@@ -28,4 +28,4 @@ def createPDF(fileName):
             pdf.cell(200, 10, txt = line, ln = 1, align = 'L')
       
     # save the pdf with name .pdf
-    pdf.output("summary.pdf")  
+    pdf.output("minutes.pdf")  
